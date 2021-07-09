@@ -7,6 +7,7 @@ export const userSignIn=(Email, Password)=>async(dispatch)=>{
     try{
         const {data} = await axios.post('/users/sign', {Email,Password});
         dispatch({type: USER_SIGN_SUCCESS, payload: data});
+        localStorage.setItem("userInfo", JSON.stringify(data));
     }catch(err){
         dispatch({type: USER_SIGN_FAIL, payload: err.message});
     }
