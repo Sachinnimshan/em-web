@@ -2,7 +2,7 @@
 
 
 .nav-header{
-    background-color: #232F3E;
+    background-color: #131921;
 }
 .avatar {
     vertical-align: middle;
@@ -26,7 +26,7 @@
     left: 0;
     background-color: white;
     z-index: 1;
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: 25px;
     min-width: 280px;
@@ -75,7 +75,7 @@
     padding: 1rem 1rem;
     min-width: 325px;
     position: fixed;
-    z-index: -1;
+    z-index: 2;
     letter-spacing: 1px;
     font-size: 15px;
     font-family: 'Poppins', sans-serif;

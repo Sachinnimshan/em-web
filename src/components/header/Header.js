@@ -22,14 +22,14 @@ function Header() {
         dispatch(userSignOut());
     }
     return (
-        <div className='nav-header container-fluid d-flex p-4 justify-content-between'>
+        <div  className='nav-header container-fluid d-flex p-4 justify-content-between'>
             <div>
                 <VscThreeBars onClick={showsidebar} className='icons'/>
             </div>
             <Fade left>
             <div className={sidebar ? 'side-menu active' : 'side-menu'}>
                         <div className='side-menu-profile-container'>
-                            <div className='user-profile'>{(userInfo) ? (<><FaUserCircle className='icons'/>{" "}Hello{", "}{userInfo.Firstname}</>): (<><FaUserCircle className='icons'/>{" "}Hello, Sign In</>)}</div>   
+                            <div className='user-profile'>{(userInfo) ? (<><img src={userInfo.Profile} className='avatar'/>{" "}Hello{", "}{userInfo.Firstname}</>): (<><FaUserCircle className='icons'/>{" "}Hello, Sign In</>)}</div>   
                             <div><CgClose className='icons' onClick={closesidebar}/></div>
                         </div>
                         <div className='side-menu-container'>
