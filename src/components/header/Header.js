@@ -7,7 +7,7 @@ import './header.css';
 import {VscThreeBars} from 'react-icons/vsc';
 import {CgClose} from 'react-icons/cg';
 import {FaUserCircle} from 'react-icons/fa';
-import {Fade} from 'react-bootstrap/Fade';
+import Fade from 'react-reveal/Fade';
 import {sidebarData} from './NavbarData';
 
 function Header() {
@@ -22,26 +22,29 @@ function Header() {
         dispatch(userSignOut());
     }
     return (
-        <div className='container-fluid d-flex p-4 bg-light justify-content-between'>
+        <div className='nav-header container-fluid d-flex p-4 justify-content-between'>
             <div>
                 <VscThreeBars onClick={showsidebar} className='icons'/>
             </div>
-            <nav className={sidebar ? 'side-menu active' : 'side-menu'}>
-                    <ul className='container nav-items'>
-                        <li className='nav-item'>
-                        {(userInfo) ? (<><FaUserCircle className='icons'/>{" "}Hello{", "}{userInfo.Firstname}</>): (<><FaUserCircle className='icons'/>{" "}Hello, Sign In</>)}   
-                            {"  "}<CgClose className='icons' onClick={closesidebar}/></li>
-                        {sidebarData.map((item)=>{
-                            return(
-                                <li className='nav-item' key={item.Title} onClick={closesidebar}>
+            <Fade left>
+            <div className={sidebar ? 'side-menu active' : 'side-menu'}>
+                        <div className='side-menu-profile-container'>
+                            <div className='user-profile'>{(userInfo) ? (<><FaUserCircle className='icons'/>{" "}Hello{", "}{userInfo.Firstname}</>): (<><FaUserCircle className='icons'/>{" "}Hello, Sign In</>)}</div>   
+                            <div><CgClose className='icons' onClick={closesidebar}/></div>
+                        </div>
+                        <div className='side-menu-container'>
+                        {sidebarData.map((item)=>(
+                                <div className='menu-item' key={item.Title} onClick={closesidebar}>
                                 <Link to={item.Path} className={item.CName}>{item.Title}</Link>
-                            </li>
-                            );
-                        })}
-                    </ul>
-                </nav>
+                            </div>
+                            )
+                        )}
+                        </div>
+                </div>
+            </Fade>
+            
             <div className='d-flex gap-2'>
-             {(userInfo) ? (<div><span onClick={userSignOutHandle}>{userInfo.Firstname}</span>
+             {(userInfo) ? (<div><span className='user-info' onClick={userSignOutHandle}>{userInfo.Firstname}</span>
              {" "}<img src={userInfo.Profile} className='avatar'/></div>) : (<div><Link to='/login'><button type="button" className="btn btn-outline-primary mr-2">Log In</button></Link>
             <Link to='/register'><button type="button" className="btn btn-outline-primary">Sign Up</button></Link></div>)}
             </div>
